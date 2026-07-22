@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 20th Birthday Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;
+600;
+700&family=DM+Mono&family=Manrope:wght@400;
+600;
+700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bg">
+</div>
+<div class="noise">
+</div>
+<header>
+<div class="logo">ACE'S <i>QUEST</i>
+</div>
+<div class="progress" id="progress">
+<b class="on">
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+<b>
+</b>
+</div>
+</header>
+<div class="companion" id="companion" aria-hidden="true">
+<img class="kazuha-frame idle" src="images/kazuha-idle.png" alt="">
+<img class="kazuha-frame wave" src="images/kazuha-wave.png" alt="">
+</div>
+<div class="speech" id="speech">
+<b>Kazuha:</b> A little birthday quest awaits. Let us begin, traveler.</div>
+<main class="quest">
+<section class="screen active title" data-step="0">
+<div class="chapter">The twentieth chapter · Debojyoty's day</div>
+<h1>Welcome, <em>Ace.</em>
+<br>To your birthday quest.</h1>
+<p>This special adventure was made for Debojyoty — a.k.a. Ace — the birthday legend who is about to unlock level 20. Seven chapters. No scrolling. Only quests.</p>
+<button class="button start" onclick="next()">Begin, Ace →</button>
+</section>
+<section class="screen" data-step="1">
+<div class="challenge">
+<div class="chapter">Quest 01 · Gather the maple leaves</div>
+<h2>Catch 7 wind leaves.</h2>
+<p class="lead">Tap the falling leaves before they disappear. The guide says it is excellent training for birthday luck.</p>
+<div class="leaf-zone" id="leafZone">
+</div>
+<div class="score">Leaves caught: <span id="score">0</span> / 7</div>
+<button id="leafNext" class="button" disabled onclick="next()">Quest complete →</button>
+</div>
+</section>
+<section class="screen" data-step="2">
+<div class="challenge">
+<div class="chapter">Quest 02 · A test of taste</div>
+<h2>Choose the five-star.</h2>
+<p class="lead">Which companion definitely deserves the birthday spotlight?</p>
+<div class="choices" id="choices">
+<button class="choice" data-good="0">Paimon</button>
+<button class="choice" data-good="1">Kazuha</button>
+<button class="choice" data-good="0">A random hilichurl</button>
+<button class="choice" data-good="0">The loading screen</button>
+</div>
+<button id="quizNext" class="button" disabled onclick="next()">Continue →</button>
+</div>
+</section>
+<section class="screen" data-step="3">
+<div class="challenge">
+<div class="chapter">Quest 03 - Kazuha memory match</div>
+<h2>Match the wind cards.</h2>
+<p class="lead">Flip two cards at a time. Find all three Kazuha pairs to unlock Ace's next quest.</p>
+<div class="memory-grid" id="memoryGrid">
+<button class="memory-card" data-symbol="maple">Maple</button>
+<button class="memory-card" data-symbol="wind">Wind</button>
+<button class="memory-card" data-symbol="sword">Sword</button>
+<button class="memory-card" data-symbol="wind">Wind</button>
+<button class="memory-card" data-symbol="maple">Maple</button>
+<button class="memory-card" data-symbol="sword">Sword</button>
+</div>
+<button id="memoryNext" class="button" disabled onclick="next()">Memory clear - continue</button>
+</div>
+</section>
+<section class="screen" data-step="4">
+<div class="challenge">
+<div class="chapter">Quest 04 · Anemo rhythm</div>
+<h2>Charge Ace's wind blade.</h2>
+<p class="lead">Click Strike the moment the marker crosses the glowing zone. Land 3 parries — it gets faster and tighter each time.</p>
+<div class="rhythm">
+<div class="rhythm-track" id="rhythmTrack">
+<div class="rhythm-zone" id="rhythmZone"></div>
+<div class="rhythm-marker" id="rhythmMarker"></div>
+</div>
+</div>
+<button id="blade" class="button" disabled>Strike</button>
+<p class="score" id="bladeText">Parries: <span id="bladeCount">0</span> / 3</p>
+<button id="bladeNext" class="button" disabled onclick="next()">Perfect parry →</button>
+</div>
+</section>
+<section class="screen" data-step="5">
+<div class="challenge">
+<div class="chapter">Quest 05 · The wind's riddle</div>
+<h2>Prove your traveler knowledge.</h2>
+<p class="lead">One last test before the cake. Kazuha would expect nothing less.</p>
+<div class="choices" id="choices2">
+<button class="choice" data-good="1">A sword-wielding samurai</button>
+<button class="choice" data-good="0">A claymore-swinging oni</button>
+<button class="choice" data-good="0">A hydro healer from Fontaine</button>
+<button class="choice" data-good="0">A shopkeeper in Liyue</button>
+</div>
+<button id="triviaNext" class="button" disabled onclick="next()">Riddle solved →</button>
+</div>
+</section>
+<section class="screen" data-step="6">
+<div class="challenge">
+<div class="chapter">Quest 06 · The cake of Ace</div>
+<h2>Light Debojyoty's candles.</h2>
+<p class="lead">Tap all three candles, make a wish for Ace, and let the birthday magic begin.</p>
+<div class="cake">
+<div class="plate">
+</div>
+<div class="tier">
+</div>
+<div class="tier two">
+</div>
+<button class="candle c1" aria-label="Light candle one">
+</button>
+<button class="candle c2" aria-label="Light candle two">
+</button>
+<button class="candle c3" aria-label="Light candle three">
+</button>
+</div>
+<button id="cakeNext" class="button" disabled onclick="next()">Cake lit — open message →</button>
+</div>
+</section>
+<section class="screen" data-step="7">
+<div class="letter">
+<div class="chapter">Unlocked birthday message</div>
+<h2>Happy 20th,<br>
+<span>Debojyoty “Ace.”</span>
+</h2>
+<p>Ace, oh no — here we go. My guy Debojyoty, it's actually your 20th birthday. Sorry this website is all I could give you, man — just a small gift I made with my own two hands.</p>
+<p>Also yeah, I know you're gay, my friend. Bahahaha. The gayest, kindest, and best friend I've ever had in my life, no cap.</p>
+<p>And hey — your lovely Perez is waiting for you, kiddo.</p>
+<small>Debojyoty, you are officially level 20 now. That is not getting old — that is a major character upgrade with legendary stats.</small>
+<br>
+<br>
+<button class="button" onclick="next()">One more surprise →</button>
+</div>
+</section>
+<section class="screen" data-step="8">
+<div class="challenge">
+<div class="chapter">Bonus quest · Crack the fortunes</div>
+<h2>Crack all 3 fortune cookies.</h2>
+<p class="lead">Tap each cookie, traveler. The wind hides a different secret in every one.</p>
+<div class="cookie-row" id="cookieRow">
+<button class="cookie" data-id="1" aria-label="Crack fortune cookie one">🥠</button>
+<button class="cookie" data-id="2" aria-label="Crack fortune cookie two">🥠</button>
+<button class="cookie" data-id="3" aria-label="Crack fortune cookie three">🥠</button>
+</div>
+<p class="score" id="cookieScore">Cookies cracked: <span id="cookieCount">0</span> / 3</p>
+<ul class="fortune-list" id="fortuneList"></ul>
+<button id="cookieNext" class="button" disabled onclick="next()">Continue →</button>
+</div>
+</section>
+<section class="screen" data-step="9">
+<div class="letter long">
+<div class="chapter">About the birthday legend</div>
+<h2>A little about <span>Ace.</span></h2>
+<p>Ace...</p>
+<p>Man, I've known you for such a long time now, and honestly, you're the best male friend I've ever made online... and yeah, my best friend too. (Ahem... after my sweety Kairu, you know... ahem ahem. 😌)</p>
+<p>I still remember the very first day we met. 😂 Perez introduced you to us when me, Kaira, and Perez were playing co-op. Then you joined.</p>
+<p>The funniest part? Every single time Perez called you to join, I had to leave because of some real-life work. 🤣 Poor Perez seriously thought you and I had some secret fight because I always disappeared whenever you joined.</p>
+<p>And I think you thought the same thing too... that I was leaving because of you. 💀</p>
+<p>When I found out both you and Perez believed that, I couldn't stop laughing. Peak misunderstanding. 😂</p>
+<p>Eventually I started making time to play with you guys, and from there... we became real friends.</p>
+<p>A friendship I honestly never even had in real life.</p>
+<p>You've always been there whenever I was sad, angry, stressed, or depressed.</p>
+<p>(Mostly because of that Kaira... tch. I know she'll read this too, so yes, I'm mentioning her name again. 😤)</p>
+<p>Then it became our little squad...</p>
+<p>Me, you, Kaira, Perez, and our little kiddo Hafsa.</p>
+<p>Eventually everyone had their own paths, and Hafsa left the group...</p>
+<p>Our little Lumine. 🥲</p>
+<p>Now let's talk about Perez.</p>
+<p>Bro...</p>
+<p>I swear that guy became gay because of you.</p>
+<p>FOR YOU.</p>
+<p>That man loves you too much. 😭</p>
+<p>Honestly, I think you two are hiding something.</p>
+<p>I'm convinced you guys are secretly boyfriend and boyfriend.</p>
+<p>See?</p>
+<p>I'm basically Sherlock Holmes at this point. 🔍</p>
+<p>Jokes aside...</p>
+<p>You've always been there for me.</p>
+<p>And I know I accidentally caused you pain because that's how you met Yena.</p>
+<p>I'm genuinely sorry about that, man.</p>
+<p>I'll find you a better girlfriend one day.</p>
+<p>...</p>
+<p>Actually never mind.</p>
+<p>You already have Perez.</p>
+<p>Problem solved. 😌</p>
+<p>I don't even know if you'll read all of this because you're probably already bored. 😂</p>
+<p>I actually planned to write way more, but I'll stop here...</p>
+<p>Also...</p>
+<p>It's Kaira's fault.</p>
+<p>She literally told me to flirt with you for this message.</p>
+<p>I SWEAR I'M NOT GAY. 🤞</p>
+<p>But...</p>
+<p>Ace...</p>
+<p>You're actually a cute pookie.</p>
+<p>I won't even lie.</p>
+<p>Especially when you FALL ASLEEP WHILE PLAYING GENSHIN.</p>
+<p>BRO.</p>
+<p>IF YOU WERE NEXT TO ME I WOULD'VE POURED COLD WATER ON YOUR FACE.</p>
+<p>Be grateful you live far away. 😭</p>
+<p>Whenever you randomly fall asleep, I imagine this tiny chubby Ace licking his finger like a baby while sleeping.</p>
+<p>WHY IS THAT IMAGE SO CUTE??</p>
+<p>I CAN'T STOP LAUGHING EVERY TIME I THINK ABOUT IT. 😂</p>
+<p>And don't think I forgot...</p>
+<p>Perez literally had your name saved as "My Love."</p>
+<p>YOU GOT CAUGHT IN 4K.</p>
+<p>The screenshots don't lie.</p>
+<p>Not me...</p>
+<p>EVERYONE SAW THEM.</p>
+<p>Explain yourself. 😭</p>
+<p>Also...</p>
+<p>You like Kazuha.</p>
+<p>That's enough evidence.</p>
+<p>You're officially gay.</p>
+<p>Very gay.</p>
+<p>Ultra gay.</p>
+<p>Maximum gay.</p>
+<p>And I know you're secretly into men.</p>
+<p>But sadly...</p>
+<p>I'm already reserved for my Kairu. 😌</p>
+<p>So...</p>
+<p>Perez is waiting for you.</p>
+<p>Or maybe go hit on Saikyo.</p>
+<p>That guy is handsome too.</p>
+<p>Anyway...</p>
+<p>No matter how much I roast you...</p>
+<p>You're genuinely one of the best people I've ever met.</p>
+<p>Right beside Kaira.</p>
+<p>Thank you for everything, Ace.</p>
+<p>Seriously.</p>
+<p>And you know something I'll never forget?</p>
+<p>You're the very first person in my entire 20 years of life to ever give me a birthday gift.</p>
+<p>That meant so much to me.</p>
+<p>You made my birthday feel truly special.</p>
+<p>I'll never forget that memory.</p>
+<p>Thank you, brother. ❤️</p>
+<p>Aur haan...</p>
+<p>Achhe se padhai kar.</p>
+<p>Future mein hum dono businessmen banenge.</p>
+<p>Main tujhe apna bodyguard banaunga. 😎</p>
+<p>Phir hum Pakistan jayenge...</p>
+<p>Kaira ko kidnap karenge mere liye.</p>
+<p>Uske baad India aake Perez ko kidnap karenge.</p>
+<p>Phir West Bengal jaake Chandra ko tere liye kidnap karenge.</p>
+<p>Dekha?</p>
+<p>Ek boyfriend.</p>
+<p>Ek girlfriend.</p>
+<p>Balance maintained. 😌</p>
+<p>Main apni Kairu ke saath bhaag jaunga.</p>
+<p>Tu Perez aur Chandra ke saath khush rehna.</p>
+<p>Aur agar zarurat padi...</p>
+<p>Yena ko bhi kidnap kar denge.</p>
+<p>...</p>
+<p>Okay okay...</p>
+<p>That was a joke.</p>
+<p>Sorry again about everything.</p>
+<p>😭</p>
+<p>Thank you for every laugh...</p>
+<p>Every late-night Genshin session...</p>
+<p>Every stupid conversation...</p>
+<p>Every roast...</p>
+<p>And every moment you've been there for me.</p>
+<p>I honestly couldn't have asked for a better friend.</p>
+<p>Happy Birthday, Ace. ❤️</p>
+<p>Stay happy.</p>
+<p>Stay healthy.</p>
+<p>Stay annoying.</p>
+<p>And never change.</p>
+<p>Your idiot friend,</p>
+<p>Cass 💙</p>
+<button class="button" onclick="next()">Ace's final quest →</button>
+</div>
+</section>
+<section class="screen final" data-step="10">
+<div class="challenge">
+<div class="chapter">Secret final quest · for Ace only</div>
+<h2>Are you gay?</h2>
+<p class="lead" id="finalSub">Choose carefully, Debojyoty. The wind is watching.</p>
+<div class="answer-zone" id="answerZone">
+<button id="yes" class="answer">Yes</button>
+<button id="no" class="answer">No</button>
+</div>
+<p class="score" id="chaseScore" style="display:none">The wind bends fate: <span id="chaseCount">0</span>/6 escapes</p>
+<div class="result" id="result">✨ I knew it. Happy birthday, Ace. ✨
+<br><br>
+<button class="button" onclick="next()">One last note →</button>
+</div>
+</div>
+</section>
+<section class="screen" data-step="11">
+<div class="challenge final-note">
+<div class="chapter">The very last page</div>
+<h2>Happy Birthday,<br>
+<em>Ace.</em>
+</h2>
+<p class="lead">Happy birthday again, Debojyoty. For real this time.</p>
+<p class="lead">This small birthday quest — every leaf, every riddle, every fortune cookie — is a small gift from your dear handsome friend, Cass, and his wife, Kaira.</p>
+<p class="lead">May your 20th year be loud, lucky, and full of people who love you as much as we do.</p>
+<small>With love, Cass &amp; Kaira 💙</small>
+</div>
+</section>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+
